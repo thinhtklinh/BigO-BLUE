@@ -1,0 +1,43 @@
+# Vitaly and String:
+read(s)
+read(t)
+duyet s from end to start:
+    if s[i] == 'z':
+        s[i] = a
+    else:
+        s[i] += 1
+        break
+
+if s != t:
+    print("s")
+else:
+    print("no such string")
+
+# Suffix structures:
+read(s)
+read(t)
+cntS = cntT = 26*[0]
+for i = 0 to length(s) - 1:
+    cntS[s[i] - 'a'] += 1
+for i = 0 to length(t) - 1:
+    cntT[t[i] - 'a'] += 1
+
+for i = 0 to 25:
+    if cntS[i] < cntT[i]:
+        print("need tree")
+    else:
+        match = -1
+        for i = 0 to length(t) - 1:
+            id = -1
+            for j = match + 1 to length(s) - 1:
+                if t[i] == s[j]:
+                    id = j
+                    break
+            if id != -1:
+                match = id
+                if i == length(t) - 1:
+                    print("automaton")
+                    break
+            else:
+                print("both")
+                break

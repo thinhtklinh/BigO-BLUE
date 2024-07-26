@@ -1,0 +1,33 @@
+// Ex 2: Lakes in Berland
+b1 read input
+b2 BFS/DFS to find all valid lake with size
+b3 sort the lakes by its size
+b4 fill land to the lakes until lakes = k (BFD/DFS)
+b5 print the maze after filling
+
+// Ex 3: Dudu Service Maker
+read(t)
+while (t--):
+    read(v, e)
+    for i = 0 to e:
+        read(u, v)
+        graph[u].push_back(v)
+    
+    visited = [fasle]*v
+    flag = [false]*v
+
+    for i = 0 to v:
+        if (!visited[i]):
+            DFS(i)
+    print
+
+def DFS(u):
+    visited[u] = True
+    flag[u] = True
+    for v in graph[u]:
+        if (flag[v]):
+            ans = "YES"
+            return
+        if !visited(v):
+            DFS(v)
+    flag[u] = False

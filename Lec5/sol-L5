@@ -1,0 +1,77 @@
+// Ex2:
+read(t)
+visited = [[False]*20]*20
+for tc = 1 to t:
+    read(m, n)
+    reset visited
+    maze = m*[]
+    for i = 0 to m-1:
+        read(line)
+        maze[i] = line
+    entries = []
+    for i = 0 to m-1:
+        for j = 0 to n - 1:
+            if onEdge(i, j) and maze[i][j] == '.':
+                entries.push((i, j))
+    if len(entries) != 2:
+        print('invalid')
+    else:
+        (x1, y1) = entries[0]
+        (x2, y2) = entries[1]
+        if BFS((x1, y1), (x2, y2)):
+            print('valid')
+        else:
+            print('invalid')
+
+def onEdge(i, j):
+    return i==0 or j==0 or i==m-1 or j==n-1:
+
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, 1, -1]
+def BFS((x1, y1), (x2, y2)):
+    q = Queue()
+    q.push((x1, y1))
+    visited[x1][y1] = 1
+    while not q.empty():
+        (x, y) = q.front()
+        q.pop()
+        for i = 0 to 3:
+            u = dx[i] + x
+            v = dy[i] + y
+            if maze[u][v] == '.' and inMaze(u, v) and not visited[u][v]:
+                visited[u][v] = 1
+                if u == x2 and v == y2:
+                    return true
+                q.push((u,v))
+    return False
+
+def inMaze(u, v):
+    return 0 <= u < m and 0 <= v < n
+
+// Ex 3:
+MOD = 100000
+maxV = 100001
+
+read(x, y)
+read(n)
+read(arr)
+print(BFS(x, y, n, arr))
+
+def BFS(x, y, n, arr):
+    dist = maxV * [-1]
+    q = Queue()
+    q.push(x)
+    dist[x] = 0
+    while not q.empty():
+        u = q.front()
+        q.pop()
+        for i = 0 to n-1:
+            v = (u*arr[i]) mod MOD
+            if dist[v] == -1:
+                q.push(v)
+                dist[v] = dist[u]+1
+            if v == y:
+                return dist[v]
+    return -1
+

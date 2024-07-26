@@ -1,0 +1,33 @@
+Ex6: Approximating a Constant Range
+read(n)
+read(arr)
+
+ri = 0, best = 0, cnt = 0
+fre[1e5+1]*[0]
+
+for le = 0 to n - 1:
+    while cnt <= 2 and ri < n:
+        if cnt == 2 and fre[arr[ri]] == 0:
+            break
+        if fre[arr[ri]] == 0:
+            cnt+=1
+        fre[arr[ri]] += 1
+        ri += 1
+    best = max(best, ri - le)
+    if fre[arr[le]] == 1:
+        cnt -= 1
+    fre[arr[le]] -= 1
+print(best)
+
+Ex7: Wrath
+read(n)
+read(arr)
+
+kill = 0, j = n-1
+for i = n-1 to 0:
+    j = min(i, j)
+    lastK = max(0, i-arr[i])
+    if lastK < j:
+        kill += j - lastK
+        lastK = j
+print(n - kill)

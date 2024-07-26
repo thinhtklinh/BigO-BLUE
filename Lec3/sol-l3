@@ -1,0 +1,22 @@
+# Ex4: GukiZ and Contest -> O(nlogn)
+read(n)
+read(arr)
+
+Sarr = sorted(arr)
+int[2001] rank
+
+for i = 0 to n-1:
+    if (rank[Sarr[i]] == 0):
+        rank[Sarr[i]] = i+1
+    
+for i = 0 to n-1:
+    print(rank[arr[i]])
+
+
+# Ex5: Pasha and Tea
+read(n, w)
+read(arr)
+
+a.sort()
+m = min(arr[0], arr[n]/2)
+print(min(w, 3*n*m))
