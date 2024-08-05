@@ -1,0 +1,31 @@
+// ex4: Chicago
+struct Edge {
+    int u, v;
+    double w;
+};
+
+while (true) {
+    cin >> n;
+    if (n == 0) break;
+    cin >> m;
+    graph = []
+    for (int i=0; i<m; i++) {
+        cin >> u >> v >> p;
+        graph.push_back(Edge(u, v, p/100));
+    }
+    safe = [-1]*n;
+    BellmanFord(0);
+    cout << safe[n-1]*100;
+}
+
+def BellmanFord(s) {
+    safe[s] = 1;
+    for (int i=0; i<n-1; i++) {
+        for e in graph {
+            u, v, w = e.u, e.v, e.w;
+            safe[u] = max(safe[u], safe[v]*p);
+            safe[v] = max(safe[v], safe[u]*p);
+        }
+    }
+}
+

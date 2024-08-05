@@ -10,21 +10,6 @@ long long dist[maxV];
 long long maxD;
 int leaf;
 
-// void DFS(int s, int len) {
-//     visited[s] = 1;
-//     if (len != -1) curD += len;
-//     maxD = max(curD, maxD);
-//     for (int i=0; i<graph[s].size(); i++) {
-//         int v = graph[s][i].first;
-//         if (!visited[v]) {
-//             int l = graph[s][i].second;
-//             DFS(v, l);
-//         }
-//     }
-//     if (len != -1) curD -= len;
-//     visited[s] = 0;
-// }
-
 void DFS(int src) {
     fill(dist, dist+maxV, -1);
     stack<int> s;
@@ -51,38 +36,6 @@ void DFS(int src) {
         }
     }
 
-}
-
-void ex8_TLE() {
-    int tc;
-    cin >> tc;
-    while (tc--) {
-        cin >> V;
-        E = V - 1;
-
-        for (int i=0; i<V; i++) {
-            graph[i].clear();
-        }
-
-        int u, v, l;
-        for (int i=0; i<E; i++) {
-            cin >> u >> v >> l;
-            graph[u-1].push_back(make_pair(v-1, l));
-            graph[v-1].push_back(make_pair(u-1, l));
-        }
-
-        long long ans = 0;
-        for (int i = 0; i<V; i++) {
-            if (graph[i].size() == 1) { // only go from leaf
-                maxD = curD = 0;
-                DFS(i, -1);
-                // visited[i] = 1;
-                ans = max(ans, maxD);
-            }
-        }
-        cout << ans;
-        if (tc) cout << '\n';
-    }
 }
 
 void ex8() {
