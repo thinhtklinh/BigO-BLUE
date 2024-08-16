@@ -1,0 +1,56 @@
+// ex2: Isenbaev's Number -> O(N*3logN + N + 3N) -> O(NlogN)
+read(n)
+id = BST()
+cnt = 0
+graph = [[] for _ in range(n)]
+for i=1 to n:
+    read(a, b, c)
+    if a not in id:
+        id[a] = cnt++
+    if b not in id:
+        id[b] = cnt++
+    if c not in id:
+        id[c] = cnt++
+    
+    graph[id[a]].push_back(id[b], id[c])
+    graph[id[b]].push_back(id[a], id[c])
+    graph[id[c]].push_back(id[a], id[b])
+
+if "Isenbaev" not in id:
+    id["Isenbaev"] = cnt
+
+dist = [INF]*n
+BFS(id["Isenbaev"], dist, graph)
+for key in id:
+    if dist[id[key]] == INF:
+        print(key, "undefined")
+    else:
+        print(key, dist[id[key]])
+
+
+// ex6: Minimun Loss -> O(nlogn)
+read(n)
+for i=1 to n:
+    read(p[i])
+    root = None
+    ans = INF
+    for i=1 to n:
+        px = upper_bound(root, p[i])
+        if px != None:
+            ans = min(ans, px.val - p[i])
+            root = insert(root, p[i])
+    print(ans)
+
+
+def upper_bound(root, x):
+    if root == None:
+        return root
+    if root.val <= x:
+        return upper_bound(root.right, x)
+    else:
+        ubl = upper_bound(root.left, x)
+        if ubl == None:
+            return root
+        else:
+            return ubl
+
