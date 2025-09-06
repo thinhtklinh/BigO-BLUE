@@ -1,19 +1,19 @@
 # Outlines
-- L1: Introduction
-- L2: Dynamic Array & String
-- L3: Algorithmic Complexity
-- L4: Sorting
-- L5: Stack & Queue
-- L6: Breadth-First Search
-- L7: Depth-First Search
-- L8: Heap
+- L0: Introduction
+- L1: Dynamic Array & String
+- L2: Algorithmic Complexity
+- L3: Sorting
+- L4: Stack & Queue
+- L5: Breadth-First Search
+- L6: Depth-First Search
+- L7: Heap
+- L8: Dijkstra algo
 - *Midterm exam*
-- L10: Dijkstra algo
-- L11: Bellman-Ford algo
-- L12: Floyd-Warshall algo
-- L13: Binary Search
-- L14: Binary Search Tree
-- L15: Trie
-- L16: Prim algo
-- L17: Disjoint Set Union
+- L10: Bellman-Ford algo
+- L11: Floyd-Warshall algo
+- L12: Binary Search
+- L13: Binary Search Tree
+- L14: Trie
+- L15: Prim algo
+- L16: Disjoint Set Union
 - *Final exam*
